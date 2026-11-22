@@ -14,7 +14,7 @@ team-24
 
 ## mosAIc
 
-mosAIc es un guardrail que revisa la respuesta de un agente de IA antes de entregarla. Detecta cuándo una frase inocente, sumada a lo que el destinatario ya sabe, le permitiría deducir un secreto, y en ese caso entrega una versión que igual cumple la tarea o la deja en revisión. La API evalúa borradores libres mediante extracción con Claude, una vista adversarial por destinatario y reglas verificables. La demo visual funciona con un catálogo de ejemplos.
+mosAIc es un guardrail que revisa mensajes antes de entregarlos, ya sea de personas o agentes de IA. Detecta cuándo una frase inocente, sumada a lo que el destinatario ya sabe, le permitiría deducir un secreto, y en ese caso detiene el envío y notifica al usuario.
 
 ## Probarlo
 
