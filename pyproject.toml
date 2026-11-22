@@ -21,4 +21,4 @@ mosaic = "isde.cli:main"
 # Ship the example YAMLs inside the package so `isde demo` works from any directory after a plain install.
 packages = ["isde", "isde.examples"]
 package-dir = {"isde.examples" = "examples"}
-package-data = {"isde.examples" = ["*.yaml"]}
+package-data = {"isde" = ["fonts/*", "logo.png"], "isde.examples" = ["*.yaml"]}

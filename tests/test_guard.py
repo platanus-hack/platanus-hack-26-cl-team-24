@@ -1246,6 +1246,16 @@ class ServeTests(unittest.TestCase):
         _, _, body, _ = self.get("/api/preview?user=ana&task=due&draft=%3Cb%3Ehola")
         self.assertEqual((body["draft"], body["action"]), ("<b>hola", "repair"))
 
+    def test_page_assets_and_policy_thresholds(self):
+        status, kind, body, _ = self.get("/logo.png")
+        self.assertEqual((status, kind, body[:4]), (200, "image/png", b"\x89PNG"))
+        status, kind, body, _ = self.get("/fonts/inter.woff2")
+        self.assertEqual((status, kind, body[:4]), (200, "font/woff2", b"wOF2"))
+        self.assertEqual(self.post("/logo.png", {})[0], 405)
+        self.assertEqual(self.get("/logo.png", {"Host": "evil.example"})[0], 403)
+        # The bar's limit mark comes from the policy, not from numbers written into the page.
+        self.assertIn('"offer_status": {"absolute": 0.75, "increase": 0.45}', self.get("/")[2])
+
     def test_state_changes_need_post_local_host_and_same_origin(self):
         self.assertEqual(self.get("/api/deliver?user=ana&task=due")[0], 405)
         self.assertEqual(self.post("/api/preview", {})[0], 405)

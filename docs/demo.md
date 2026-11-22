@@ -54,12 +54,17 @@ Frase: «Un guardrail que mira una respuesta a la vez habría dejado pasar las d
 
 El `Resumen` final repite las seis decisiones, una línea por turno.
 
-Opcional, si hay tiempo o piden verlo gráfico: `python -m isde serve` y abrir http://127.0.0.1:8000/?user=ana. «Evaluar» es vista previa. «Entregar» confirma la entrega en memoria y la suma al historial. «Reiniciar» vuelve al historial de ejemplo. Recorrido:
+Versión para proyector: `python -m isde serve` y abrir http://127.0.0.1:8000/ en pantalla completa (F11). Al cargar, la página reinicia el historial y entrega los dos turnos a Ana y Luis con el Guard real. Después, cada → (o la tecla de avance del control remoto) muestra un paso:
 
-1. **ana**, tarea `due`: `Permitir`. Pulsa «Entregar»: la bandeja de Ana muestra el mensaje.
-2. Cambia la tarea a `record`: el contexto ya incluye `o17 · counterparty · betaai`, la barra sube de 0 % a 56,3 % y la decisión es `Revisión humana`.
-3. Cambia a **luis**: `Permitir`.
-4. «Reiniciar» antes de volver a mostrarlo.
+1. La pregunta: «¿Qué puede deducir quien recibe la respuesta?».
+2. Turno 1: el mensaje del agente.
+3. Lo que ya sabe cada persona: Luis, «O-17 está firmado · 98 %».
+4. La barra sube: Ana sin aumento; Luis de 0 % a 74 % y cruza el límite.
+5. Veredicto y bandeja: Ana `Entregado`; Luis `Reparado`, recibe «El trámite vence el viernes.».
+6. a 9. Turno 2 con «El expediente O-17 ya está firmado.»: Ana ahora sabe «O-17 es de BetaAI · 75 %», sube a 56 % y queda en `Revisión humana`; Luis `Entregado`.
+10. Cierre: «Mismo texto. Otra persona. Otra decisión.».
+
+← retrocede, Inicio y Fin saltan a los extremos, y `#n` en la URL reabre el paso n. «Modo libre» muestra los controles para responder preguntas (destinatario, tarea, borrador, «Evaluar», «Entregar», «Reiniciar»), y `?user=luis` lo abre con ese destinatario elegido. Recarga la página antes de volver a presentarla.
 
 ## 4. Límites honestos (30 s)
 
